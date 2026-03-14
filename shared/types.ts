@@ -1,0 +1,2 @@
+export interface TraderStats { twitter_handle: string; display_name: string; composite_score: number; rank: number; total_trades: number; qualified: boolean; open_positions: number; }
+export interface LeaderboardEntry { rank: number; trader_id: string; twitter_handle: string; display_name: string; composite_score: number; total_return_pct: number; sharpe_ratio: number | null; max_drawdown_pct: number; trade_count: number; daily_change: number; }

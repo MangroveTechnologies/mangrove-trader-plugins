@@ -1,0 +1,7 @@
+{
+  "name": "mangrove-trader-plugins",
+  "version": "0.1.0",
+  "description": "Claude Code + OpenClaw plugins for MangroveTrader social trading leaderboard",
+  "private": true,
+  "license": "MIT"
+}

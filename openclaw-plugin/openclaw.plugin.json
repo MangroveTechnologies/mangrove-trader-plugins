@@ -1,0 +1,11 @@
+{
+  "name": "mangrove-trader",
+  "version": "1.0.0",
+  "description": "MangroveTrader social trading leaderboard",
+  "tools": [
+    {"name": "trader_my_stats", "description": "Get your score, rank, positions (free)", "parameters": {"twitter_handle": {"type": "string"}}},
+    {"name": "trader_performance_report", "description": "Detailed performance breakdown (free)", "parameters": {"twitter_handle": {"type": "string"}, "timeframe": {"type": "string", "enum": ["daily","weekly","monthly","all_time"]}}},
+    {"name": "trader_get_leaderboard", "description": "Top 100 leaderboard ($0.25 USDC)", "parameters": {"timeframe": {"type": "string"}, "limit": {"type": "number"}, "payment": {"type": "string"}}},
+    {"name": "trader_search_trader", "description": "Look up any trader ($0.02 USDC)", "parameters": {"twitter_handle": {"type": "string"}, "payment": {"type": "string"}}}
+  ]
+}
