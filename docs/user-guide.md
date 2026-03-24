@@ -14,14 +14,14 @@ Step-by-step guide to using every MangroveTrader feature through the Claude Code
 ## Install
 
 ```bash
-git clone https://github.com/MangroveTechnologies/mangrove-trader-plugins.git
-claude plugin marketplace add ./mangrove-trader-plugins
+git clone https://github.com/MangroveTechnologies/mangrove-trader-plugin.git
+claude plugin marketplace add ./mangrove-trader-plugin
 claude plugin install mangrove-trader
 ```
 
 Or for a single session:
 ```bash
-claude --plugin-dir ./mangrove-trader-plugins
+claude --plugin-dir ./mangrove-trader-plugin
 ```
 
 Start Claude Code and verify the plugin loaded:

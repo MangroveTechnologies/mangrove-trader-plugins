@@ -410,10 +410,10 @@ Final version with all 9 tools listed.
 
 | Phase | Subagent | Repo |
 |-------|----------|------|
-| 1 | `backend-developer` | mangrove-trader-plugins |
+| 1 | `backend-developer` | mangrove-trader-plugin |
 | 2 | `backend-developer` (via MangroveTrader product owner) | MangroveTrader |
-| 3 | `backend-developer` | mangrove-trader-plugins |
-| 4 | `backend-developer` | mangrove-trader-plugins |
+| 3 | `backend-developer` | mangrove-trader-plugin |
+| 4 | `backend-developer` | mangrove-trader-plugin |
 
 ---
 

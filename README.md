@@ -1,21 +1,25 @@
 # MangroveTrader Plugin for Claude Code
 
-Social trading leaderboard plugin. Track trades via [@MangroveTrader](https://twitter.com/MangroveTrader) on Twitter, check your stats and performance for free, and access full rankings and trader search via x402 micropayments.
+[MangroveTrader](https://mangrovetraders.com) is a social trading leaderboard where traders post trades on Twitter, positions are tracked against real market data, and performance is scored daily.
+
+This plugin connects Claude Code to the MangroveTrader MCP server, giving you 12 slash commands and 9 MCP tools for stats, leaderboard, trade history, and more.
+
+**Website:** [mangrovetraders.com](https://mangrovetraders.com)
+**Twitter:** [@MangroveTrader](https://twitter.com/MangroveTrader)
+**Source:** [github.com/MangroveTechnologies/mangrove-trader-plugin](https://github.com/MangroveTechnologies/mangrove-trader-plugin)
 
 ## Install
 
-From source (GitHub):
-
 ```bash
-git clone https://github.com/MangroveTechnologies/mangrove-trader-plugins.git
-claude plugin marketplace add ./mangrove-trader-plugins
+git clone https://github.com/MangroveTechnologies/mangrove-trader-plugin.git
+claude plugin marketplace add ./mangrove-trader-plugin
 claude plugin install mangrove-trader
 ```
 
 Or load for a single session without installing:
 
 ```bash
-claude --plugin-dir ./mangrove-trader-plugins
+claude --plugin-dir ./mangrove-trader-plugin
 ```
 
 ## Commands
@@ -39,13 +43,16 @@ All commands are prefixed with `/mt-`:
 
 ## MCP Tools
 
-The plugin connects to MangroveTrader's MCP server. 9 tools available.
+The plugin connects to MangroveTrader's MCP server at `https://api.mangrovetraders.com/mcp/`. 9 tools available:
 
 | Tool | Access | Price |
 |------|--------|-------|
 | `trader_my_stats` | Free | -- |
 | `trader_performance_report` | Free | -- |
 | `trader_last_trade` | Free | -- |
+| `trader_cancel_last` | Free | -- |
+| `trader_watch` | Free | -- |
+| `trader_unwatch` | Free | -- |
 | `trader_get_leaderboard` | x402 | $0.25+ USDC |
 | `trader_search_trader` | x402 | $0.02 USDC |
 | `trader_get_trade_history` | x402 | $0.01/3 trades |
@@ -55,16 +62,23 @@ The plugin connects to MangroveTrader's MCP server. 9 tools available.
 1. Tweet your trade to **@MangroveTrader** on Twitter (use `/mt-track` to compose)
 2. A Grok-powered agent parses your trade and tracks the position
 3. Positions are marked-to-market against real prices every 5 minutes
-4. Scoring runs daily at midnight UTC: 50% return, 30% consistency (Sharpe), 20% risk (max drawdown)
+4. Scoring runs daily at midnight UTC
 
 ### Tweet Format
 
 ```
-enter long 100 AAPL @ 185.50       # Equities
-enter long 2.5 BTC @ 64000         # Crypto
-enter short 5 ES @ 5250            # Futures
-enter long 10 AAPL 190C 2026-04-18 @ 3.50  # Options
+@MangroveTrader long 100 AAPL @ 185.50       # Equities
+@MangroveTrader enter long 2.5 BTC @ 64000   # Crypto
+@MangroveTrader exit short 5 ES @ 5250       # Futures
 ```
+
+### Scoring
+
+| Component | Weight | Metric |
+|-----------|--------|--------|
+| Return | 50% | Total return percentage |
+| Consistency | 30% | Sharpe ratio |
+| Risk Management | 20% | Max drawdown (lower is better) |
 
 ## x402 Payments
 
@@ -76,8 +90,26 @@ Paid tools use the [x402 protocol](https://www.x402.org/) for micropayments:
 - **Safety:** You are never charged if data retrieval fails
 - **API key bypass:** `X-API-Key` header on REST endpoints skips x402
 
-For agents with wallets: use the x402 SDK or MangroveMarkets TypeScript SDK.
+For agents with wallets: use the x402 SDK or MangroveMarkets TypeScript SDK to sign payments.
 For Claude Code users without wallets: free tools work without payment. Paid data available via REST API with an API key.
+
+## Security and Privacy
+
+This plugin connects to a remote MCP server hosted on GCP Cloud Run. Here is what it does and does not do:
+
+- **Data accessed:** Public trading data (scores, ranks, trade history). No personally identifiable information.
+- **No credentials stored:** The plugin does not store, transmit, or require any API keys, wallet keys, or passwords.
+- **Payment confirmation:** Paid tools always show the price and ask for confirmation before any charge. You are never charged without explicit consent.
+- **x402 payments:** All payments settle on Base mainnet (USDC). Transaction hashes are returned for on-chain verification.
+- **Server source code:** The MCP server source is public at [github.com/MangroveTechnologies/MangroveTrader](https://github.com/MangroveTechnologies/MangroveTrader).
+- **No tracking:** The plugin does not track usage, analytics, or telemetry beyond what the MCP server logs for rate limiting.
+
+## Documentation
+
+- [User Guide](docs/user-guide.md) -- Step-by-step walkthrough of every feature
+- [MangroveTrader Website](https://mangrovetraders.com) -- Landing page with full docs
+- [API Reference](https://mangrovetraders.com/docs/api-reference) -- REST and MCP endpoint details
+- [Twitter Validation Checklist](https://github.com/MangroveTechnologies/MangroveTrader/blob/main/docs/reports/twitter-validation-checklist.md) -- Test every feature on Twitter
 
 ## License
 
