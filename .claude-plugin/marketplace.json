@@ -1,6 +1,6 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "mangrove-trader-plugins",
+  "name": "mangrove-trader-plugin",
   "description": "MangroveTrader social trading leaderboard plugin for Claude Code",
   "owner": {
     "name": "Mangrove Technologies"
@@ -9,7 +9,7 @@
     {
       "name": "mangrove-trader",
       "description": "Social trading leaderboard. Track trades via @MangroveTrader on Twitter, check stats and performance for free, access rankings and trader search via x402 micropayments (USDC on Base).",
-      "version": "1.0.0",
+      "version": "2.0.0",
       "source": "./",
       "author": {
         "name": "Mangrove Technologies"
