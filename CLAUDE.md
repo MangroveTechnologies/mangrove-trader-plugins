@@ -25,7 +25,7 @@ docs/plans/                   Implementation plans
 
 **Free:** `/mt-stats`, `/mt-report`, `/mt-last`, `/mt-track`, `/mt-status`, `/mt-help`
 **Paid (x402):** `/mt-leaderboard`, `/mt-search`, `/mt-history`
-**Coming soon:** `/mt-cancel`, `/mt-watch`, `/mt-unwatch` (need server-side MCP tools first)
+**Free actions:** `/mt-cancel`, `/mt-watch`, `/mt-unwatch`
 
 ## MCP Server
 
@@ -35,7 +35,7 @@ The plugin connects to the MangroveTrader MCP server via streamable HTTP at `htt
 
 **Free:** `trader_my_stats`, `trader_performance_report`, `trader_last_trade`
 **Paid (x402):** `trader_get_leaderboard` ($0.25+), `trader_search_trader` ($0.02), `trader_get_trade_history` ($0.01/3 trades)
-**Coming soon:** `trader_cancel_last`, `trader_watch`, `trader_unwatch`
+**Free actions:** `trader_cancel_last`, `trader_watch`, `trader_unwatch`
 
 ## x402 Payment Flow
 

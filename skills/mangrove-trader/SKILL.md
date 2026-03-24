@@ -13,7 +13,7 @@ version: 2.0.0
 
 Social trading leaderboard. Traders tweet to **@MangroveTrader** on Twitter, a Grok-powered agent parses trades, tracks positions against real market data, computes scoring metrics, and exposes rankings.
 
-**9 MCP tools** -- 3 free, 3 paid via x402 (USDC on Base), 3 coming soon.
+**9 MCP tools** -- 6 free, 3 paid via x402 (USDC on Base).
 **12 commands** -- all prefixed with `/mt-`.
 
 ---
@@ -29,9 +29,9 @@ Social trading leaderboard. Traders tweet to **@MangroveTrader** on Twitter, a G
 | `/mt-search` | Find a trader | x402 $0.02 |
 | `/mt-history` | Trade history | x402 $0.01/3 trades |
 | `/mt-track` | Compose a trade tweet | Free |
-| `/mt-cancel` | Cancel last trade (5-min window) | Free (coming soon) |
-| `/mt-watch` | Watch a trader | Free (coming soon) |
-| `/mt-unwatch` | Stop watching a trader | Free (coming soon) |
+| `/mt-cancel` | Cancel last trade (5-min window) | Free |
+| `/mt-watch` | Watch a trader | Free |
+| `/mt-unwatch` | Stop watching a trader | Free |
 | `/mt-status` | Server health + tool list | Free |
 | `/mt-help` | List all commands | Free |
 
@@ -180,9 +180,9 @@ Traders must close a minimum number of trades to qualify for scoring and the lea
 | `trader_get_leaderboard` | x402 | $0.25+ | Full rankings (dynamic pricing) |
 | `trader_search_trader` | x402 | $0.02 | Look up any trader by name/handle |
 | `trader_get_trade_history` | x402 | $0.01/3 trades | Full trade log |
-| `trader_cancel_last` | Free | -- | Cancel most recent trade (coming soon) |
-| `trader_watch` | Free | -- | Watch a trader (coming soon) |
-| `trader_unwatch` | Free | -- | Stop watching (coming soon) |
+| `trader_cancel_last` | Free | -- | Cancel most recent trade |
+| `trader_watch` | Free | -- | Watch a trader |
+| `trader_unwatch` | Free | -- | Stop watching |
 
 ---
 

@@ -31,15 +31,15 @@ All commands are prefixed with `/mt-`:
 | `/mt-search` | Find a trader by handle or name | Paid ($0.02 USDC) |
 | `/mt-history` | Complete trade history | Paid ($0.01/3 trades) |
 | `/mt-track` | Compose a trade tweet for @MangroveTrader | Free |
-| `/mt-cancel` | Cancel your last trade (5-min window) | Free (coming soon) |
-| `/mt-watch` | Watch a trader's activity | Free (coming soon) |
-| `/mt-unwatch` | Stop watching a trader | Free (coming soon) |
+| `/mt-cancel` | Cancel your last trade (5-min window) | Free |
+| `/mt-watch` | Watch a trader's activity | Free |
+| `/mt-unwatch` | Stop watching a trader | Free |
 | `/mt-status` | Server health and tool availability | Free |
 | `/mt-help` | List all commands | Free |
 
 ## MCP Tools
 
-The plugin connects to MangroveTrader's MCP server. 6 tools available now, 3 coming soon.
+The plugin connects to MangroveTrader's MCP server. 9 tools available.
 
 | Tool | Access | Price |
 |------|--------|-------|

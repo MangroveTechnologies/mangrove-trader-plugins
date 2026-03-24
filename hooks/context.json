@@ -1,6 +1,6 @@
 {
   "hookSpecificOutput": {
     "suppressOutput": true,
-    "additionalContext": "MangroveTrader plugin active. Commands: /mt-stats, /mt-report, /mt-last (free), /mt-leaderboard ($0.25+), /mt-search ($0.02), /mt-history ($0.01/3 trades) (x402 USDC on Base), /mt-track (compose trade tweet), /mt-help, /mt-status. Free MCP tools: trader_my_stats, trader_performance_report, trader_last_trade. Paid MCP tools: trader_get_leaderboard, trader_search_trader, trader_get_trade_history. Trades are logged by tweeting to @MangroveTrader on Twitter."
+    "additionalContext": "MangroveTrader plugin active. Commands: /mt-stats, /mt-report, /mt-last, /mt-cancel, /mt-watch, /mt-unwatch (free), /mt-leaderboard ($0.25+), /mt-search ($0.02), /mt-history ($0.01/3 trades) (x402 USDC on Base), /mt-track (compose trade tweet), /mt-help, /mt-status. Free MCP tools: trader_my_stats, trader_performance_report, trader_last_trade, trader_cancel_last, trader_watch, trader_unwatch. Paid MCP tools: trader_get_leaderboard, trader_search_trader, trader_get_trade_history. Trades are logged by tweeting to @MangroveTrader on Twitter."
   }
 }

@@ -18,7 +18,7 @@ Check server health and show tool availability.
 3. List all MCP tools with access tier and pricing:
 
 ```
-MCP Tools (6 available, 3 coming soon)
+MCP Tools (9 available)
 
 FREE
   trader_my_stats              Score, rank, open positions
@@ -30,7 +30,7 @@ PAID (x402, USDC on Base)
   trader_search_trader         Trader lookup ($0.02)
   trader_get_trade_history     Full trade log ($0.01/3 trades)
 
-COMING SOON
+FREE (continued)
   trader_cancel_last           Cancel most recent trade (5-min window)
   trader_watch                 Watch a trader
   trader_unwatch               Stop watching a trader
