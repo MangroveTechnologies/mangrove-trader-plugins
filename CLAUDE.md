@@ -31,7 +31,7 @@ docs/plans/                   Implementation plans
 
 The plugin connects to the MangroveTrader MCP server via streamable HTTP at `https://api.mangrovetraders.com/mcp/`. No local process needed -- the server runs on GCP Cloud Run.
 
-## Tools (6 available, 3 coming soon)
+## Tools (9 available)
 
 **Free:** `trader_my_stats`, `trader_performance_report`, `trader_last_trade`
 **Paid (x402):** `trader_get_leaderboard` ($0.25+), `trader_search_trader` ($0.02), `trader_get_trade_history` ($0.01/3 trades)
