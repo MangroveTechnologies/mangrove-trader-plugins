@@ -2,7 +2,7 @@
 
 [MangroveTrader](https://mangrovetraders.com) is a social trading leaderboard where traders post trades on Twitter, positions are tracked against real market data, and performance is scored daily.
 
-This plugin connects Claude Code to the MangroveTrader MCP server, giving you 12 slash commands and 9 MCP tools for stats, leaderboard, trade history, and more.
+This plugin connects Claude Code to the MangroveTrader MCP server, giving you 13 slash commands and 9 MCP tools for stats, leaderboard, trade history, and more.
 
 **Website:** [mangrovetraders.com](https://mangrovetraders.com)
 **Twitter:** [@MangroveTrader](https://twitter.com/MangroveTrader)

@@ -29,7 +29,7 @@ Start Claude Code and verify the plugin loaded:
 /mt-help
 ```
 
-You should see all 12 commands listed. If you don't see `/mt-help`, the plugin didn't load -- check the install steps above.
+You should see all 13 commands listed. If you don't see `/mt-help`, the plugin didn't load -- check the install steps above.
 
 ---
 
@@ -287,7 +287,7 @@ Enter your handle and the target trader's handle.
 **Expected:** All 12 commands listed in user-journey order (trade, stats, report, history, leaderboard, search, manage, utility), with pricing for paid commands.
 
 **Pass criteria:**
-- [ ] 12 commands shown
+- [ ] 13 commands shown
 - [ ] Pricing shown for paid commands
 - [ ] Own trade history noted as free
 
@@ -308,6 +308,7 @@ Enter your handle and the target trader's handle.
 | 9 | Cancel trade | `/mt-cancel` | `trader_cancel_last` | Free |
 | 10 | Watch trader | `/mt-watch` | `trader_watch` | Free |
 | 11 | Unwatch trader | `/mt-unwatch` | `trader_unwatch` | Free |
-| 12 | Help | `/mt-help` | (local only) | Free |
+| 12 | Set handle | `/mt-set-handle` | (session only) | Free |
+| 13 | Help | `/mt-help` | (local only) | Free |
 
 **Total cost to test everything:** $0.28+ USDC (if you test all 3 paid tools with minimum params). Free tools cost nothing.
