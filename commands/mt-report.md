@@ -10,7 +10,7 @@ Get a detailed performance report for a trader.
 ## Steps
 
 1. Use the handle from `/mt-set-handle` if set. Otherwise ask for Twitter handle.
-2. Ask for timeframe if not specified. Valid: `daily`, `weekly`, `monthly`, `all_time`, `30d`, `7d`. Default: `30d`
+2. Ask for timeframe if not specified. Valid: `daily`, `weekly`, `monthly`, `all_time`, `30d`, `7d`. Default: `all_time`
 3. Call the `trader_performance_report` MCP tool with `twitter_handle` and `timeframe`
 4. **If MCP tool is not available**, fall back to REST: `POST https://api.mangrovetraders.com/api/v1/trader/performance_report` with `{"twitter_handle": "<handle>", "timeframe": "<timeframe>"}`
 5. Present results with scoring breakdown:
