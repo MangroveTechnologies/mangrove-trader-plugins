@@ -11,18 +11,19 @@ Trades are submitted by tweeting to @MangroveTrader on Twitter. This command hel
 
 ## Steps
 
-1. Ask for trade details if not provided:
+1. Check the `MT_AUTH_TOKEN` environment variable. If not set, call `trader_login` to get a verification URL and stop.
+2. Ask for trade details if not provided:
    - **Action**: enter long, enter short, exit long, exit short (shortcuts: long, short, bought, sold, grabbed, dumped, faded)
    - **Quantity**: number of units
    - **Symbol**: ticker (BTC, AAPL, ES, etc.)
    - **Price**: entry/exit price
-2. For options, also ask:
+3. For options, also ask:
    - **Strike**: strike price
    - **Type**: C (call) or P (put)
    - **Expiry**: YYYY-MM-DD format
-3. Compose the tweet text in the correct format
-4. Tell the user: "Tweet this to @MangroveTrader on Twitter:"
-5. Show the formatted trade text
+4. Compose the tweet text in the correct format.
+5. Tell the user: "Tweet this to @MangroveTrader on Twitter:"
+6. Show the formatted trade text.
 
 ## Tweet Formats
 
