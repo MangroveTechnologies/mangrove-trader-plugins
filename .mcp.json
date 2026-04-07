@@ -1,7 +1,7 @@
 {
   "mcpServers": {
     "mangrove-trader": {
-      "type": "streamableHttp",
+      "type": "http",
       "url": "https://api.mangrovetraders.com/mcp/"
     }
   }
