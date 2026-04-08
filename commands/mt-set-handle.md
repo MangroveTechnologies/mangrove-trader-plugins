@@ -1,21 +1,23 @@
 ---
 name: mt-set-handle
-description: Set your Twitter handle for this session (used by all other commands)
+description: Verify your X identity and set your Twitter handle for this session
 ---
 
 # mt-set-handle
 
-Set your Twitter handle so other commands don't have to ask every time.
+Verify your X identity so all commands know who you are.
+
+Your handle is derived from your verified session token — not from a string you type. This protects against anyone impersonating another trader.
 
 ## Steps
 
-1. The user provides their Twitter handle (with or without @)
-2. Remember this handle for the rest of the conversation
-3. Confirm: "Handle set to @{handle}. All commands will use this as your identity."
-4. From now on, when any `/mt-*` command needs `twitter_handle` or `requester_handle`, use this handle automatically instead of asking.
+1. Check the `MT_AUTH_TOKEN` environment variable.
+2. If `MT_AUTH_TOKEN` is set, call `trader_my_stats` with `auth_token` to resolve and confirm the verified handle.
+3. Confirm: "Verified as @{handle}. All commands will use this identity."
+4. If `MT_AUTH_TOKEN` is not set, call `trader_login` to get a verification URL. Tell the user to authenticate with X, then set the token in their environment and run `/mt-set-handle` again.
 
 ## Notes
 
-- This is session-scoped — it resets when you start a new conversation
-- You can change it anytime by running `/mt-set-handle` again
-- Commands that look up OTHER traders (e.g., `/mt-stats someoneelse`) still accept an explicit handle
+- Identity is verified server-side via X OAuth 2.0 — it cannot be spoofed
+- The session token expires in 30 days; run `/mt-set-handle` again after re-authenticating
+- Commands that look up OTHER traders (e.g., `/mt-last <handle>`) still accept an explicit handle

@@ -9,9 +9,9 @@ View a trader's complete trade history. Your own history is free.
 
 ## Steps
 
-1. Use the handle from `/mt-set-handle` if set. Otherwise ask for the Twitter handle to look up, and optional trade limit (0 = all, max 1000).
-2. **If looking up your own history**: call `trader_get_trade_history` with `twitter_handle` AND `requester_handle` set to your own handle. No payment needed -- data returns directly with `"access": "free"`.
-3. **If MCP tool is not available for own history**, fall back to REST: `POST https://api.mangrovetraders.com/api/v1/trader/trade_history` with `{"twitter_handle": "<handle>", "requester_handle": "<handle>"}`
+1. Ask for the Twitter handle to look up, and optional trade limit (0 = all, max 1000).
+2. **If looking up your own history**: Check `MT_AUTH_TOKEN` env var. If set, call `trader_get_trade_history` with `twitter_handle` AND `auth_token`. No payment needed -- data returns directly with `"access": "free"`.
+3. **If MCP tool is not available for own history**, fall back to REST: `POST https://api.mangrovetraders.com/api/v1/trader/trade_history` with `{"twitter_handle": "<handle>", "auth_token": "<token>"}`
 4. **If looking up someone else's history**: call `trader_get_trade_history` WITHOUT `payment` parameter first. Server returns PAYMENT_REQUIRED with total trades and computed price.
 5. Present: "X trades available, cost is $Y USDC. Proceed?"
 6. **If payment capability available**: sign x402 payment, call again WITH `payment`, present trade list (action, symbol, asset class, quantity, price, timestamp)
@@ -19,6 +19,6 @@ View a trader's complete trade history. Your own history is free.
 
 ## Pricing
 
-- **Your own trades**: Free (always)
+- **Your own trades**: Free (always, with auth_token)
 - **Others' trades**: $0.01 per 3 trades (rounded up)
 - Examples: 3 trades = $0.01, 10 trades = $0.04, 100 trades = $0.34, 1000 trades = $3.34
