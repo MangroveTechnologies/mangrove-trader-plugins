@@ -7,9 +7,7 @@
   },
   "homepage": "https://mangrovetraders.com",
   "repository": "https://github.com/MangroveTechnologies/mangrove-trader-plugin",
-  "hooks": "./hooks/hooks.json",
   "license": "MIT",
-  "category": "productivity",
   "keywords": [
     "trading",
     "leaderboard",

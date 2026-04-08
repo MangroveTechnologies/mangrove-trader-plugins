@@ -3,9 +3,13 @@
   "hooks": {
     "UserPromptSubmit": [
       {
-        "type": "command",
-        "command": "echo '{\"hookSpecificOutput\":{\"suppressOutput\":true,\"additionalContext\":\"MangroveTrader plugin active. If the user has set their handle via /mt-set-handle, use it for all commands that need twitter_handle or requester_handle. Commands: /mt-track (compose trade), /mt-stats [handle] (free), /mt-report [handle] [timeframe] (free), /mt-last [handle] (free), /mt-history [handle] [limit] (own free, others $0.01/3 trades x402), /mt-leaderboard [timeframe] [limit] ($0.25+ x402, top 5 free on Twitter), /mt-search <query> ($0.02 x402), /mt-cancel [handle] (free, 5-min window), /mt-watch [handle] <target> (free), /mt-unwatch [handle] <target> (free), /mt-set-handle <handle> (set your Twitter handle), /mt-status, /mt-help. MCP server: mangrove-trader at https://api.mangrovetraders.com/mcp/. REST fallback: https://api.mangrovetraders.com/api/v1/. Website: mangrovetraders.com. Trades are logged by tweeting to @MangroveTrader on Twitter.\"}}'",
-        "timeout": 5
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '{\"hookSpecificOutput\":{\"suppressOutput\":true,\"additionalContext\":\"MangroveTrader plugin active. If the user has set their handle via /mt-set-handle, use it for all commands that need twitter_handle or requester_handle. Commands: /mt-track (compose trade), /mt-stats [handle] (free), /mt-report [handle] [timeframe] (free), /mt-last [handle] (free), /mt-history [handle] [limit] (own free, others $0.01/3 trades x402), /mt-leaderboard [timeframe] [limit] ($0.25+ x402, top 5 free on Twitter), /mt-search <query> ($0.02 x402), /mt-cancel [handle] (free, 5-min window), /mt-watch [handle] <target> (free), /mt-unwatch [handle] <target> (free), /mt-set-handle <handle> (set your Twitter handle), /mt-status, /mt-help. MCP server: mangrove-trader at https://api.mangrovetraders.com/mcp/. REST fallback: https://api.mangrovetraders.com/api/v1/. Website: mangrovetraders.com. Trades are logged by tweeting to @MangroveTrader on Twitter.\"}}'",
+            "timeout": 5
+          }
+        ]
       }
     ]
   }
