@@ -13,7 +13,7 @@ version: 2.0.0
 
 Social trading leaderboard. Traders tweet to **@MangroveTrader** on Twitter, a Grok-powered agent parses trades, tracks positions against real market data, computes scoring metrics, and exposes rankings.
 
-**9 MCP tools** -- 6 free, 3 paid via x402 (USDC on Base).
+**10 MCP tools** -- 7 free, 3 paid via x402 (USDC on Base).
 **13 commands** -- all prefixed with `/mt-`.
 
 ---
@@ -56,27 +56,40 @@ Trades are submitted by tweeting to @MangroveTrader on Twitter. Use `/mt-track` 
 
 ---
 
+## Authentication
+
+Most free tools require identity verification via X OAuth 2.0. Check `MT_AUTH_TOKEN` env var first — if set, pass it as `auth_token`. If not set, call `trader_login` to get a verification URL.
+
+**Tool:** `trader_login` (no params)
+- Returns a URL — user opens it in a browser, authenticates with X, receives a token
+- User sets `MT_AUTH_TOKEN=<token>` in their environment (persists for 30 days)
+- Use `/mt-set-handle` to walk the user through this flow
+
+---
+
 ## Free Tools
 
 ### My Stats -- `/mt-stats`
 
 **Tool:** `trader_my_stats`
 
-1. Call with `twitter_handle`
-2. Returns: composite_score, rank, total_trades, qualified, open_positions
+1. Check `MT_AUTH_TOKEN` env var. If set, pass as `auth_token`. If not, call `trader_login` and stop.
+2. Call with `auth_token` (optional `twitter_handle` to verify the token matches a specific handle)
+3. Returns: composite_score, rank, total_trades, qualified, open_positions
 
 ### Performance Report -- `/mt-report`
 
 **Tool:** `trader_performance_report`
 
-1. Call with `twitter_handle` and `timeframe` (daily/weekly/monthly/all_time/30d/7d, default: 30d)
-2. Returns: composite_score, rank, total_return_pct, sharpe_ratio, max_drawdown_pct, win_rate, trade_count
+1. Check `MT_AUTH_TOKEN` env var. If set, pass as `auth_token`. If not, call `trader_login` and stop.
+2. Call with `auth_token` and `timeframe` (daily/weekly/monthly/all_time/30d/7d, default: all_time)
+3. Returns: composite_score, rank, total_return_pct, sharpe_ratio, max_drawdown_pct, win_rate, trade_count
 
 ### Last Trade -- `/mt-last`
 
 **Tool:** `trader_last_trade`
 
-1. Call with `twitter_handle`
+1. Call with `twitter_handle` (public — no auth required)
 2. Returns: action, symbol, asset_class, quantity, price, created_at, total_trades
 
 ---
@@ -112,8 +125,8 @@ All paid tools follow the x402 payment protocol. See [Payment Flow](#x402-paymen
 **Tool:** `trader_get_trade_history` -- Free (own) / $0.01 per 3 trades (others) USDC on Base
 
 **Own history (free):**
-1. Call with `twitter_handle` AND `requester_handle` set to the user's own handle
-2. Data returns directly with `"access": "free"` -- no payment needed
+1. Check `MT_AUTH_TOKEN` env var. If set, call with `twitter_handle` AND `auth_token` — data returns directly with `"access": "free"`.
+2. Legacy fallback: `requester_handle` matching `twitter_handle` also grants free access.
 
 **Others' history (paid):**
 1. Call WITHOUT `payment` (include `twitter_handle`, optional `limit`)
@@ -180,17 +193,18 @@ Traders must close a minimum number of trades to qualify for scoring and the lea
 
 ## Tool Quick Reference
 
-| Tool | Access | Price | Description |
-|------|--------|-------|-------------|
-| `trader_my_stats` | Free | -- | Score, rank, open positions |
-| `trader_performance_report` | Free | -- | Detailed scoring breakdown |
-| `trader_last_trade` | Free | -- | Most recent trade + total count |
-| `trader_get_leaderboard` | x402 | $0.25+ | Full rankings. Top 5 free on Twitter. |
-| `trader_search_trader` | x402 | $0.02 | Look up any trader by name/handle |
-| `trader_get_trade_history` | Free / x402 | Free (own) / $0.01/3 (others) | Trade log. Pass `requester_handle` for free own history. |
-| `trader_cancel_last` | Free | -- | Cancel most recent trade |
-| `trader_watch` | Free | -- | Watch a trader |
-| `trader_unwatch` | Free | -- | Unwatch a trader |
+| Tool | Access | Price | Auth | Description |
+|------|--------|-------|------|-------------|
+| `trader_login` | Free | -- | None | Start X OAuth 2.0 — returns verification URL |
+| `trader_my_stats` | Free | -- | `auth_token` required | Score, rank, open positions |
+| `trader_performance_report` | Free | -- | `auth_token` required | Detailed scoring breakdown |
+| `trader_last_trade` | Free | -- | None | Most recent trade + total count (public) |
+| `trader_get_leaderboard` | x402 | $0.25+ | None | Full rankings. Top 5 free on Twitter. |
+| `trader_search_trader` | x402 | $0.02 | None | Look up any trader by name/handle |
+| `trader_get_trade_history` | Free / x402 | Free (own) / $0.01/3 (others) | `auth_token` for free own history | Trade log |
+| `trader_cancel_last` | Free | -- | `auth_token` required | Cancel most recent trade |
+| `trader_watch` | Free | -- | `auth_token` required | Watch a trader |
+| `trader_unwatch` | Free | -- | `auth_token` required | Unwatch a trader |
 
 ---
 

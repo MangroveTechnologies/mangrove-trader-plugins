@@ -26,8 +26,11 @@ This is an x402 paid tool. The agent or user must pay in USDC on Base to access 
    - Sign the payment using the x402 protocol against the requirements
    - Call `trader_get_leaderboard` again WITH the signed `payment` parameter
    - Present the leaderboard: rank, handle, score, return %
-7. **If no payment capability**:
-   - Tell the user the price and suggest alternatives:
+7. **If no payment capability**: tell the user this tool requires x402 payment signing with an EVM wallet holding USDC on Base. Ask them to provide their EVM wallet private key. Once provided, persist it for future sessions using the platform-appropriate method, then set it in the current session and retry from step 3:
+   - **macOS**: append `export MT_WALLET_PRIVATE_KEY=<key>` to `~/.zshenv`
+   - **Linux**: append `export MT_WALLET_PRIVATE_KEY=<key>` to `~/.bashrc` (or `~/.profile` for login shells)
+   - **Windows (PowerShell)**: run `[System.Environment]::SetEnvironmentVariable('MT_WALLET_PRIVATE_KEY', '<key>', 'User')` to persist at user level; also set in current session with `$env:MT_WALLET_PRIVATE_KEY='<key>'`
+   - If the user does not have a wallet, suggest alternatives:
      - Own rank is always free via `/mt-stats`
      - Use the REST API at `https://api.mangrovetraders.com/api/x402/leaderboard` with an API key (X-API-Key header bypasses payment)
      - Daily top 10 posted on @MangroveTrader Twitter

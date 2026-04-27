@@ -2,7 +2,7 @@
 
 [MangroveTrader](https://mangrovetraders.com) is a social trading leaderboard where traders post trades on Twitter, positions are tracked against real market data, and performance is scored daily.
 
-This plugin connects Claude Code to the MangroveTrader MCP server, giving you 13 slash commands and 9 MCP tools for stats, leaderboard, trade history, and more.
+This plugin connects Claude Code to the MangroveTrader MCP server, giving you 13 slash commands and 10 MCP tools for stats, leaderboard, trade history, and more.
 
 **Website:** [mangrovetraders.com](https://mangrovetraders.com)
 **Twitter:** [@MangroveTrader](https://twitter.com/MangroveTrader)
@@ -44,19 +44,20 @@ All commands are prefixed with `/mt-`:
 
 ## MCP Tools
 
-The plugin connects to MangroveTrader's MCP server at `https://api.mangrovetraders.com/mcp/`. 9 tools available:
+The plugin connects to MangroveTrader's MCP server at `https://api.mangrovetraders.com/mcp/`. 10 tools available:
 
-| Tool | Access | Price |
-|------|--------|-------|
-| `trader_my_stats` | Free | -- |
-| `trader_performance_report` | Free | -- |
-| `trader_last_trade` | Free | -- |
-| `trader_cancel_last` | Free | -- |
-| `trader_watch` | Free | -- |
-| `trader_unwatch` | Free | -- |
-| `trader_get_leaderboard` | x402 | $0.25+ USDC (top 5 free on Twitter) |
-| `trader_search_trader` | x402 | $0.02 USDC |
-| `trader_get_trade_history` | Free / x402 | Free (own) / $0.01/3 trades (others) |
+| Tool | Access | Price | Notes |
+|------|--------|-------|-------|
+| `trader_login` | Free | -- | Start X OAuth 2.0 — returns a verification URL |
+| `trader_my_stats` | Free | -- | Requires `auth_token` (MT_AUTH_TOKEN) |
+| `trader_performance_report` | Free | -- | Requires `auth_token` |
+| `trader_last_trade` | Free | -- | Public — accepts any `twitter_handle` |
+| `trader_cancel_last` | Free | -- | Requires `auth_token` |
+| `trader_watch` | Free | -- | Requires `auth_token` |
+| `trader_unwatch` | Free | -- | Requires `auth_token` |
+| `trader_get_leaderboard` | x402 | $0.25+ USDC | Top 5 free on Twitter |
+| `trader_search_trader` | x402 | $0.02 USDC | -- |
+| `trader_get_trade_history` | Free / x402 | Free (own w/ auth_token) / $0.01/3 trades (others) | -- |
 
 ## How Trading Works
 
@@ -99,7 +100,8 @@ For Claude Code users without wallets: free tools work without payment. Paid dat
 This plugin connects to a remote MCP server hosted on GCP Cloud Run. Here is what it does and does not do:
 
 - **Data accessed:** Public trading data (scores, ranks, trade history). No personally identifiable information.
-- **No credentials stored:** The plugin does not store, transmit, or require any API keys, wallet keys, or passwords.
+- **Identity verification:** Free tools that write or read your account (`trader_my_stats`, `trader_cancel_last`, `trader_watch`, `trader_unwatch`) require a session token obtained via X OAuth 2.0. Use `/mt-set-handle` to authenticate — your handle is verified server-side and cannot be spoofed.
+- **No credentials stored:** The plugin does not store, transmit, or require any API keys, wallet keys, or passwords. The session token (`MT_AUTH_TOKEN`) is stored only in your local environment.
 - **Payment confirmation:** Paid tools always show the price and ask for confirmation before any charge. You are never charged without explicit consent.
 - **x402 payments:** All payments settle on Base mainnet (USDC). Transaction hashes are returned for on-chain verification.
 - **Server source code:** The MCP server source is public at [github.com/MangroveTechnologies/MangroveTrader](https://github.com/MangroveTechnologies/MangroveTrader).
